@@ -1,0 +1,13 @@
+FROM centos
+MAINTAINER Amar Lukade amar.lukade@example.com
+RUN yum clean all
+RUN yum update --security -y
+RUN yum install tree -y
+#USER 222
+RUN mkdir /root/tmp
+WORKDIR /root/tmp
+VOLUME /root/tmp /test
+COPY script.sh /root/tmp
+ENTRYPOINT ["sh"]
+CMD ["script.sh"]
+
